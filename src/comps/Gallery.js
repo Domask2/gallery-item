@@ -15,7 +15,6 @@ const Gallery = () => {
         });
         setDocs(documents);
       });
-
     return () => unsub();
   }, []);
 
@@ -30,12 +29,11 @@ const Gallery = () => {
           console.log('delete');
         })
         .catch((error) => {
-          // Uh-oh, an error occurred!
+          console.log('error is a fail')
         });
     }
   };
 
-  // console.log(docs);
   return (
     <div className="img-grid">
       {docs &&
@@ -43,8 +41,7 @@ const Gallery = () => {
           <div className="img-wrap" key={doc.id}>
             <img src={doc.url} alt="uploaded pic" />
             <button onClick={deleteImage} data={doc.id} name={doc.name}>
-              {' '}
-              Удалить{' '}
+              Удалить
             </button>
           </div>
         ))}
