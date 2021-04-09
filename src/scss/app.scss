@@ -1,0 +1,27 @@
+@import 'fonts';
+@import 'variables';
+@import 'libs/normalize';
+
+@import 'comps/all';
+
+body {
+  font-family: 'Noto Serif';
+  color: var(--secondary);
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  background-color: #000;
+  font-family: 'robotolight';
+}
+
+.container {
+  max-width: 860px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.none {
+  display: none;
+}

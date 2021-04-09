@@ -3,16 +3,16 @@ import BgContent from './comps/BgContent/BgContent';
 import Drag from './comps/Drag';
 import Gallery from './comps/Gallery';
 import Header from './comps/Header/Header';
-import Title from './comps/Title';
+import Form from './comps/Header/Form';
 
 function App() {
   return (
     <div className="App">
-      <BgContent/>
-      <Header/>
-      {/* <Title />
+      <BgContent />
+      <Header />
+
       <Drag />
-      <Gallery /> */}
+      <Gallery />
     </div>
   );
 }

@@ -1,16 +1,14 @@
-import React from 'react'
-import Bg from './Bg'
-import Loader from './Loader'
-import Overlay from './Overlay'
+import React from 'react';
+import Loader from './Loader';
 
 const BgContent = () => {
   return (
     <div>
-      <Loader/>
-      <Bg/>
-      <Overlay/>
+      <Loader />
+      <div className="content-bg"></div>
+      <div className="overlay-bg"></div>
     </div>
-  )
-}
+  );
+};
 
-export default BgContent
+export default BgContent;
