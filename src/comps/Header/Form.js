@@ -34,7 +34,6 @@ const Form = () => {
           const createdAt = timestamp();
           const url = el.url;
           collectionRef.add({ url, createdAt });
-          setUrl(files[0].name);
           inputRef.current.value = null;
           setFiles(null);
         });
@@ -50,7 +49,9 @@ const Form = () => {
         <input
           type="text"
           value={url}
-          onChange={(e) => setUrl(e.target.value)}
+          onChange={(e) => {
+            setUrl(e.target.value);
+          }}
           className="form-img__input-text"
           placeholder="Введите URL or JSON"
         />
@@ -64,6 +65,7 @@ const Form = () => {
             accept="application/JSON"
             onChange={(e) => {
               setFiles(inputRef.current.files);
+              setUrl(e.target.value);
             }}
             ref={inputRef}
             className="form-img__input-file"
