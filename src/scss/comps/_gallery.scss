@@ -11,9 +11,9 @@
     .main__images__item {
       flex: auto;
       width: 200px;
-      margin: .5vw;
+      margin: 0.5vw;
       position: relative;
-      img {
+      .main__images__item__img {
         width: 100%;
         height: 330px;
         object-fit: cover;
@@ -30,7 +30,7 @@
 }
 
 @media screen and (max-width: 400px) {
-  .main__images__item  {
+  .main__images__item {
     margin: 0;
   }
   .main__images {

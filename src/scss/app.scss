@@ -32,3 +32,18 @@ body {
   margin-top: 20px;
   margin-bottom: 30px;
 }
+
+.loading {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  color: red;
+}
+
+.position {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+}

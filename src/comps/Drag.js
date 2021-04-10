@@ -43,7 +43,7 @@ const Drag = () => {
         const file = imgDragArray[i];
         const storageRef = projectStorage.ref(file.name);
         const collectionRef = projectFireStore.collection("images");
-
+        setDrag(false)
         storageRef.put(file, {name: file.name}).on(
           "state_changed",
           (snap) => {

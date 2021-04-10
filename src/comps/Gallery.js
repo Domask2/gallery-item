@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { projectFireStore, projectStorage } from "../firebase/config";
 import Drag from "./Drag";
+import { Img } from "react-image";
 
 const Gallery = () => {
   const [docs, setDocs] = useState([]);
-
+  const [loading, setLoading] = useState(true);
+  console.log(loading);
   useEffect(() => {
     const unsub = projectFireStore
       .collection("images")
@@ -18,8 +20,8 @@ const Gallery = () => {
       });
     return () => unsub();
   }, []);
-  
-  console.log(docs)
+
+  // console.log(docs)
 
   const deleteImage = (e) => {
     const collectionRef = projectFireStore.collection("images");
@@ -40,15 +42,31 @@ const Gallery = () => {
   return (
     <main className="main">
       <div className="container">
-        {
-          docs.length>0 && <Drag/>
-        }
+        {docs.length > 0 && <Drag />}
         <div className="main__images">
           {docs &&
             docs.map((doc) => (
               <div className="main__images__item" key={doc.id}>
-                <img src={doc.url} alt="uploaded pic" />
-                <button className="main__images__btn" onClick={deleteImage} data={doc.id} name={doc.name}>
+                {/* <div className={loading ? "" : "loading"}>asdasdasds</div> */}
+                {/* <img
+                  className="main__images__item__img"
+                  src={doc.url}
+                  alt="uploaded pic"
+                  onLoad={() => setLoading(false)}
+                /> */}
+
+                <Img
+                  className="main__images__item__img"
+                  src={[doc.url]}
+                  loader={<div className="lds-dual-ring"></div>}
+                />
+
+                <button
+                  className="main__images__btn"
+                  onClick={deleteImage}
+                  data={doc.id}
+                  name={doc.name}
+                >
                   Удалить
                 </button>
               </div>
