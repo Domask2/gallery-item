@@ -6,16 +6,6 @@ const Form = () => {
   const [files, setFiles] = useState(null);
   const inputRef = useRef(null);
 
-  // const handleSubmitText = (e) => {
-  //   e.preventDefault();
-  //   if (url) {
-  //     const collectionRef = projectFireStore.collection("images");
-  //     const createdAt = timestamp();
-  //     collectionRef.add({ url, createdAt });
-  //     setUrl("");
-  //   }
-  // };
-  console.log(url);
   const handleSubmitFile = (e) => {
     e.preventDefault();
 
@@ -42,7 +32,6 @@ const Form = () => {
       console.log('Введите URL или загрузите файл JSON');
     }
   };
-
   return (
     <form className="form-img">
       <label className="form-img__wrapper-text">
@@ -55,7 +44,6 @@ const Form = () => {
           className="form-img__input-text"
           placeholder="Введите URL or JSON"
         />
-        {/* <input type="submit" onClick={handleSubmitText} value="Загрузить" /> */}
       </label>
 
       <div className="form-img__container-file">
@@ -65,13 +53,11 @@ const Form = () => {
             accept="application/JSON"
             onChange={(e) => {
               setFiles(inputRef.current.files);
-              setUrl(e.target.value);
             }}
             ref={inputRef}
             className="form-img__input-file"
           />
           <span className="input__file-button-text">Выберите файл</span>
-          {/* <input type="submit" onClick={handleSubmitFile} /> */}
         </label>
 
         <input

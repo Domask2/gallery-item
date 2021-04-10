@@ -10,8 +10,6 @@ function App() {
     <div className="App">
       <BgContent />
       <Header />
-
-      <Drag />
       <Gallery />
     </div>
   );

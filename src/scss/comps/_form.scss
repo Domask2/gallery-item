@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 
     .form-img__input-text {
       width: 100%;
@@ -16,13 +17,14 @@
       border: 1px solid #fff;
       outline: 0;
       color: #fff;
+      margin-bottom: 10px;
     }
   }
 
   .form-img__container-file {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     .form-img__wrapper-file {
       display: flex;
       .form-img__input-file {
