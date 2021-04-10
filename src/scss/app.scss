@@ -1,17 +1,17 @@
-@import 'fonts';
-@import 'variables';
-@import 'libs/normalize';
+@import "fonts";
+@import "variables";
+@import "libs/normalize";
 
-@import 'comps/all';
+@import "comps/all";
 
 body {
-  font-family: 'Noto Serif';
+  font-family: "Noto Serif";
   color: var(--secondary);
   font-size: 16px;
   line-height: 24px;
   color: #fff;
   background-color: #000;
-  font-family: 'robotolight';
+  font-family: "robotolight";
 }
 
 .container {
@@ -24,4 +24,11 @@ body {
 
 .none {
   display: none;
+}
+
+.progress-bar {
+  height: 5px;
+  background: red;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }

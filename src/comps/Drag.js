@@ -4,10 +4,13 @@ import {
   projectFireStore,
   timestamp,
 } from "../firebase/config";
+import ProgressBar from "./ProgressBar";
 
 const Drag = () => {
   const [imgDragArray, setImgDragArray] = useState([]);
   const [drag, setDrag] = useState(false);
+  const [percent, setPercent] = useState(0);
+  const [url, setUrl] = useState(null);
 
   const gragStarHandler = (e) => {
     e.preventDefault();
@@ -40,12 +43,13 @@ const Drag = () => {
         const file = imgDragArray[i];
         const storageRef = projectStorage.ref(file.name);
         const collectionRef = projectFireStore.collection("images");
-    
+
         storageRef.put(file, {name: file.name}).on(
           "state_changed",
           (snap) => {
             let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
             console.log(percentage);
+            setPercent(percentage)
           },
           (err) => {
             console.log(err);
@@ -53,7 +57,7 @@ const Drag = () => {
           async () => {
             const url = await storageRef.getDownloadURL();
             const name = await storageRef._delegate._location.path;
-            
+            setUrl(url);
             const createdAt = timestamp();
             await collectionRef.add({ url, createdAt, name });
           }
@@ -85,6 +89,8 @@ const Drag = () => {
           Перетащите файлы чобы загрузить
         </div>
       )}
+
+      <ProgressBar percent={percent} setPercent={setPercent} url={url}/>
     </div>
   );
 };
