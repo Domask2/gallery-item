@@ -10,7 +10,6 @@ const ProgressBar = ({ percent, setPercent, url }) => {
   console.log(percent)
   return (
     <div className="progress-bar" style= {{width: percent + '%'}}>
-      dfdsfdgdfg
     </div>
   );
 }

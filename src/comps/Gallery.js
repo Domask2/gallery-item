@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { projectFireStore, projectStorage } from "../firebase/config";
 import Drag from "./Drag";
-import { Img } from "react-image";
 
 const Gallery = () => {
   const [docs, setDocs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  console.log(loading);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   useEffect(() => {
     const unsub = projectFireStore
       .collection("images")
@@ -20,8 +19,6 @@ const Gallery = () => {
       });
     return () => unsub();
   }, []);
-
-  // console.log(docs)
 
   const deleteImage = (e) => {
     const collectionRef = projectFireStore.collection("images");
@@ -47,22 +44,46 @@ const Gallery = () => {
           {docs &&
             docs.map((doc) => (
               <div className="main__images__item" key={doc.id}>
-                {/* <div className={loading ? "" : "loading"}>asdasdasds</div> */}
-                {/* <img
-                  className="main__images__item__img"
+                <img
                   src={doc.url}
                   alt="uploaded pic"
-                  onLoad={() => setLoading(false)}
-                /> */}
-
-                <Img
-                  className="main__images__item__img"
-                  src={[doc.url]}
-                  loader={<div className="lds-dual-ring"></div>}
+                  className={`main__images__item__img smooth-image image-${
+                    imageLoaded ? "visible" : "hidden"
+                  }`}
+                  onLoad={() => setImageLoaded(true)}
                 />
+                {!imageLoaded && (
+                  <div className="smooth-preloader">
+                    <svg
+                      width="38"
+                      height="38"
+                      viewBox="0 0 38 38"
+                      xmlns="http://www.w3.org/2000/svg"
+                      stroke="#fff"
+                    >
+                      <g fill="none" fillRule="evenodd">
+                        <g transform="translate(1 1)" strokeWidth="2">
+                          <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
+                          <path d="M36 18c0-9.94-8.06-18-18-18">
+                            <animateTransform
+                              attributeName="transform"
+                              type="rotate"
+                              from="0 18 18"
+                              to="360 18 18"
+                              dur="1s"
+                              repeatCount="indefinite"
+                            />
+                          </path>
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                )}
 
                 <button
-                  className="main__images__btn"
+                  className={`main__images__btn smooth-image image-${
+                    imageLoaded ? "visible" : "hidden"
+                  }`}
                   onClick={deleteImage}
                   data={doc.id}
                   name={doc.name}
