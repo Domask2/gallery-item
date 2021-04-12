@@ -4,6 +4,7 @@
 
 @import 'comps/all';
 
+
 body {
   font-family: 'Noto Serif';
   color: var(--secondary);
@@ -25,3 +26,6 @@ body {
 .none {
   display: none;
 }
+
+
+@import 'comps/media.scss';
