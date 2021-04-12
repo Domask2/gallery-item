@@ -7,6 +7,7 @@ const Drag = () => {
   const [drag, setDrag] = useState(false);
   const [percent, setPercent] = useState(0);
   const [url, setUrl] = useState(null);
+  const [errorDrag, setErrorDrag] = useState(false);
 
   const gragStarHandler = (e) => {
     e.preventDefault();
@@ -26,12 +27,18 @@ const Drag = () => {
       if (s.type.includes('image')) {
         return s.type.includes('image');
       } else {
-        console.log('Допускаеются картинки в формате JPG or PNG');
+        setErrorDrag(true);
       }
     });
 
     setImgDragArray(files);
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setErrorDrag(false)
+    }, 2000);
+  })
 
   useEffect(() => {
     if (imgDragArray.length > 0) {
@@ -47,7 +54,7 @@ const Drag = () => {
             setPercent(percentage);
           },
           (error) => {
-            throw error;
+            setErrorDrag(true);
           },
           async () => {
             const url = await storageRef.getDownloadURL();
@@ -82,7 +89,7 @@ const Drag = () => {
           Перетащите файлы чобы загрузить
         </div>
       )}
-
+      {errorDrag && <div className="drop-area__error"> Допускаеются картинки в формате JPG or PNG</div>}
       <ProgressBar percent={percent} setPercent={setPercent} url={url} />
     </div>
   );

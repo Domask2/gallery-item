@@ -65,4 +65,9 @@
   justify-content: center;
   text-align: center;
   margin-bottom: 30px;
+  .drop-area__error {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
 }
