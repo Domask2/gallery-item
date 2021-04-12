@@ -1,7 +1,5 @@
 # Тестовое задание на позицию фронтенд-инженера
 ## Галерея изображений
-[![Netlify Status](https://app.netlify.com/sites/quirky-roentgen-173ed4/deploys)]
-
 ### https://quirky-roentgen-173ed4.netlify.app/
 
 ## Задача
