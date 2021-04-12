@@ -18,10 +18,20 @@ const Form = () => {
     e.preventDefault();
 
     if (url) {
-      const collectionRef = projectFireStore.collection('images');
-      const createdAt = timestamp();
+      const correctImg = new Image();
+      correctImg.src = url;
 
-      collectionRef.add({ url, createdAt });
+      correctImg.onload = function () {
+        const collectionRef = projectFireStore.collection('images');
+        const createdAt = timestamp();
+
+        collectionRef.add({ url, createdAt });
+      };
+
+      correctImg.onerror = function () {
+        setErrorInput(true);
+      };
+
       setUrl('');
     } else if (files) {
       const fileReader = new FileReader();

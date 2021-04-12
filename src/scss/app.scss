@@ -1,17 +1,17 @@
-@import "fonts";
-@import "variables";
-@import "libs/normalize";
+@import 'fonts';
+@import 'variables';
+@import 'libs/normalize';
 
-@import "comps/all";
+@import 'comps/all';
 
 body {
-  font-family: "Noto Serif";
+  font-family: 'Noto Serif';
   color: var(--secondary);
   font-size: 16px;
   line-height: 24px;
   color: #fff;
   background-color: #000;
-  font-family: "robotolight";
+  font-family: 'robotolight';
 }
 
 .container {
@@ -24,47 +24,4 @@ body {
 
 .none {
   display: none;
-}
-
-.progress-bar {
-  height: 5px;
-  background: red;
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
-
-.loading {
-  color: red;
-  width: 250px;
-  height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.position {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  left: 50px;
-  top: 50px;
-}
-
-.smooth-image {
-  transition: opacity 1s;
-}
-.image-visible {
-  opacity: 1;
-}
-.image-hidden {
-  opacity: 0;
-}
-
-.smooth-preloader {
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 40px;
-  height: 40px;
-  z-index: 1;
 }
