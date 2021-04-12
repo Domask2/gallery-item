@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
-import {
-  projectStorage,
-  projectFireStore,
-  timestamp,
-} from "../firebase/config";
-import ProgressBar from "./ProgressBar";
+import React, { useEffect, useState } from 'react';
+import { projectStorage, projectFireStore, timestamp } from '../firebase/config';
+import ProgressBar from './ProgressBar';
 
 const Drag = () => {
   const [imgDragArray, setImgDragArray] = useState([]);
@@ -27,10 +23,10 @@ const Drag = () => {
     let files = e.dataTransfer.files;
 
     files = Array.from(files).filter(function (s) {
-      if (s.type.includes("image")) {
-        return s.type.includes("image");
+      if (s.type.includes('image')) {
+        return s.type.includes('image');
       } else {
-        console.log("Допускаеются картинки в формате JPG or PNG");
+        console.log('Допускаеются картинки в формате JPG or PNG');
       }
     });
 
@@ -42,17 +38,16 @@ const Drag = () => {
       for (var i = 0; i < imgDragArray.length; i++) {
         const file = imgDragArray[i];
         const storageRef = projectStorage.ref(file.name);
-        const collectionRef = projectFireStore.collection("images");
-        setDrag(false)
-        storageRef.put(file, {name: file.name}).on(
-          "state_changed",
+        const collectionRef = projectFireStore.collection('images');
+        setDrag(false);
+        storageRef.put(file, { name: file.name }).on(
+          'state_changed',
           (snap) => {
             let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
-            console.log(percentage);
-            setPercent(percentage)
+            setPercent(percentage);
           },
-          (err) => {
-            console.log(err);
+          (error) => {
+            throw error;
           },
           async () => {
             const url = await storageRef.getDownloadURL();
@@ -60,7 +55,7 @@ const Drag = () => {
             setUrl(url);
             const createdAt = timestamp();
             await collectionRef.add({ url, createdAt, name });
-          }
+          },
         );
       }
       setImgDragArray([]);
@@ -75,8 +70,7 @@ const Drag = () => {
           onDragStart={(e) => gragStarHandler(e)}
           onDragLeave={(e) => gragLeaveHandler(e)}
           onDragOver={(e) => gragStarHandler(e)}
-          onDrop={(e) => onDropHandler(e)}
-        >
+          onDrop={(e) => onDropHandler(e)}>
           Отпустить файлы для загрузки
         </div>
       ) : (
@@ -84,13 +78,12 @@ const Drag = () => {
           className="drop-area"
           onDragStart={(e) => gragStarHandler(e)}
           onDragLeave={(e) => gragLeaveHandler(e)}
-          onDragOver={(e) => gragStarHandler(e)}
-        >
+          onDragOver={(e) => gragStarHandler(e)}>
           Перетащите файлы чобы загрузить
         </div>
       )}
 
-      <ProgressBar percent={percent} setPercent={setPercent} url={url}/>
+      <ProgressBar percent={percent} setPercent={setPercent} url={url} />
     </div>
   );
 };

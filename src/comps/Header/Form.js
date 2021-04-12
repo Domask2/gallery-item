@@ -1,10 +1,18 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { projectFireStore, timestamp } from '../../firebase/config';
+import { AiOutlineDownload } from 'react-icons/ai';
 
 const Form = () => {
   const [url, setUrl] = useState('');
   const [files, setFiles] = useState(null);
+  const [errorInput, setErrorInput] = useState(false);
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setErrorInput(false);
+    }, 2000);
+  }, [errorInput]);
 
   const handleSubmitFile = (e) => {
     e.preventDefault();
@@ -12,24 +20,29 @@ const Form = () => {
     if (url) {
       const collectionRef = projectFireStore.collection('images');
       const createdAt = timestamp();
+
       collectionRef.add({ url, createdAt });
       setUrl('');
     } else if (files) {
       const fileReader = new FileReader();
+
       fileReader.readAsText(files[0], 'UTF-8');
       fileReader.onload = (e) => {
         const jsonfile = JSON.parse(e.target.result);
+
         jsonfile.galleryImages.forEach((el) => {
+          if (el === undefined) return;
           const collectionRef = projectFireStore.collection('images');
           const createdAt = timestamp();
           const url = el.url;
+
           collectionRef.add({ url, createdAt });
           inputRef.current.value = null;
           setFiles(null);
         });
       };
     } else {
-      console.log('Введите URL или загрузите файл JSON');
+      setErrorInput(true);
     }
   };
   return (
@@ -50,14 +63,17 @@ const Form = () => {
         <label className="form-img__wrapper-file">
           <input
             type="file"
-            accept="application/JSON"
-            onChange={(e) => {
+            accept=".JSON"
+            onChange={() => {
               setFiles(inputRef.current.files);
             }}
             ref={inputRef}
             className="form-img__input-file"
           />
-          <span className="input__file-button-text">Выберите файл</span>
+          <span className="input__file-button-text">
+            <AiOutlineDownload />
+            {files ? 'Выбран 1 файл' : 'Выберите файл'}
+          </span>
         </label>
 
         <input
@@ -67,6 +83,8 @@ const Form = () => {
           value="Загрузить"
         />
       </div>
+
+      {errorInput && <div className="form-img__error">Введите URL или загрузите JSON файл</div>}
     </form>
   );
 };
