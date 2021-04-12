@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Тестовое задание на позицию фронтенд-инженера
+## Галерея изображений
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]()
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Задача
+Галерея изображений на React JS. База данных - Firebase.
+## Установка
+Устанвока зависимостей:
+```sh
+npm install
+```
+Запуск проекта:
+```sh
+npm run start
+```
 
-## Available Scripts
+## Страница должна содержать два компонента:
+- Компонент загрузки картинок.
+Должен быть реализован в виде поля ввода и кнопки “Загрузить”. В поле можно ввести урл до картинки или загрузить файл со списком картинок. Формат файла —JSON. Можно использовать данный файл, сделать его копию на стороннем сервере или просто сохранить и загружать его с локального компьютера.
+- Галерея картинок.
+Должен быть реализован в виде упорядоченного набора превью всех картинок, загруженных в галерею.
 
-In the project directory, you can run:
+## Требования к галерее
+- Картинки галереи размещены  рядами. Количество рядов не ограничено.
+- Ряды одинаковы по ширине. 
+- Все картинки в одном ряду одинаковы по высоте.
+- У картинок сохранены пропорции.
+- Интерфейс должен быть responsive, максимальная ширина контейнера — 860 px, минимальная – 320 px.
+- Количество картинок в каждом ряду на максимальной ширине - 3. При сужении/расширении галереи их количество может меняться.
+- Добавлен плейсхолдеры на время загрузки.
+- Возможно добавить картинку drag-n-drop в уже готовую загруженную галерею.
+- Есть возможность удалить картинку из галереи.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Допольнительные ограничения
+- Не допускатеься загрузка битых ссылок на картинки.
+- Принимаються только JSON файлы (сам файл называется img.json - находиться в корне проекта).
+- В drag-and-drop можно загружать картинки пачками. Допускается только загрузка картинок.
