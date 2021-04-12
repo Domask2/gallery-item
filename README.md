@@ -1,6 +1,6 @@
 # Тестовое задание на позицию фронтенд-инженера
 ## Галерея изображений
-[![Netlify Status](https://api.netlify.com/api/v1/badges/22a7b562-5c5b-400c-a661-6f4d2ab7dbaa/deploy-status)](https://app.netlify.com/sites/awesome-jang-1c8406/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/22a7b562-5c5b-400c-a661-6f4d2ab7dbaa/deploy-status)](https://quirky-roentgen-173ed4.netlify.app/)
 
 ## Задача
 Галерея изображений на React JS. База данных - Firebase.
